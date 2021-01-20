@@ -1,0 +1,33 @@
+import UIKit
+
+class Computation {
+
+	public func factorial (_ x: Int) -> Int {
+		if (x < 0) {
+			print("Error:negative number")
+			return -1	//ошибка
+				}	//факториал определён только для полож. целых
+		else if (x>0) {
+			var result = 1					
+			func helper (_ y: Int,_ res: Int) -> Int {
+				if (y>0) {
+					var res=res
+					res=res*y
+					helper(y-1,res)
+						}
+				else {
+					return res
+						}
+					}
+
+				}	//основной случай
+		else{
+			return 1	//вырожденный случай
+				}	//0!=1
+		
+	}	
+
+}
+
+let Comp = Computation()
+Comp.factorial(5)
