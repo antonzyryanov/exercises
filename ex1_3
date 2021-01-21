@@ -1,0 +1,54 @@
+import Foundation
+
+class Computation {
+
+	public func closure1 (_ t: Int = 34) -> Int{
+			print(t)
+			return t
+		}
+
+	private func helper (_ y: Int,_ res: inout Int) {
+		if (y>0) {
+			//var res=res
+			res=res*y
+			helper(y-1,&res)
+				}
+	}
+
+	public func factorial (_ x: Int) -> Int {
+		if (x < 0) {
+			print("Error:negative number")
+			return -1	//ошибка
+				}	//факториал определён только для полож. целых
+		else if (x>0) {
+			var result = 1					
+			helper(x,&result)
+			return result
+				}	//основной случай
+		else{
+			return 1	//вырожденный случай
+				}	//0!=1
+		
+	}
+
+	public func sum (_ x: Int,_ f:(_ i:Int )-> Int) -> Int {
+		if (x < 0) {
+			print("Error:negative number")
+			f(0)
+			return -1
+			}
+		else {
+			var sum = 0
+			for i in 1...x {
+				sum=sum+i
+				}
+			f(2)
+			return sum
+			}
+		}	
+
+}
+
+let comp = Computation()
+print(comp.factorial(6))
+print(comp.sum(6,comp.closure1)
